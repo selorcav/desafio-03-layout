@@ -1,32 +1,63 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app color="">
+      <div class="d-flex align-center">
+        <v-toolbar-title>Mi App</v-toolbar-title>
+      </div>
+      <v-spacer></v-spacer>
+<v-btn flat elevation="0">Inicio</v-btn>
+<v-btn flat elevation="0">Buscar</v-btn>
+<v-btn flat elevation="0">Acerca de</v-btn>
+
+    </v-app-bar>
+    <v-main>
+      <v-row>
+        <v-col md="4" v-for="(personaje, index) in personajes" :key="index">
+            <v-card class="mx-auto" max-width="400">
+              <v-img
+                class="white--text align-end"
+                :src="personaje.imagen"
+              >           
+              </v-img>
+              <v-card-title>{{personaje.nombre}}</v-card-title>
+            </v-card>
+          </v-col>
+          </v-row>
+          </v-main>
+          </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  name: "App",
+data: () => ({
+    personajes: [
+{
+'id': 1,
+'nombre': 'Morty',
+'imagen': 'https://rickandmortyapi.com/api/character/avatar/2.jpeg'
+},
+{
+'id': 2,
+'nombre': 'Rick',
+'imagen': 'https://rickandmortyapi.com/api/character/avatar/1.jpeg'
+},
+{
+'id': 3,
+'nombre': 'Summer',
+'imagen': 'https://rickandmortyapi.com/api/character/avatar/3.jpeg'
+},
+{
+'id': 4,
+'nombre': 'Beth',
+'imagen': 'https://rickandmortyapi.com/api/character/avatar/4.jpeg'
+},
+{
+'id': 5,
+'nombre': 'Jerry',
+'imagen': 'https://rickandmortyapi.com/api/character/avatar/5.jpeg'
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+]
+  }),
+};
+</script>
